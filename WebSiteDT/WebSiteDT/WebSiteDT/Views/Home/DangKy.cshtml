@@ -1,0 +1,122 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc
+
+@using WebSiteDT.Models
+@model ThanhVien
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng ký thành viên</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Interior Register Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <link href="~/Content/DangKy/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/DangKy/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900" rel="stylesheet">
+</head>
+<body>
+    <div class="signupform">
+        @*<h1>Đăng ký thành viên</h1>*@
+        <div class="container" style="margin-top: 0;">
+
+            <div class="agile_info" style="margin-top: 0;">
+                <div class="w3l_form">
+                    <div class="left_grid_info">
+                        <h3>Xin chào !</h3>
+                        <h4>Hệ thống bán hàng điện tử Lemon Shop gồm: Laptop, điện thoại, máy tính bảng.</h4>
+                        <p> Hãy đăng ký trở thành 1 phần của Lemon Shop, để được hưởng những ưu đãi tốt nhất. </p>
+                        <ul class="social_section_1info">
+                            <li><a href="#" class="w3_facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" class="w3_twitter"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" class="w3_instagram"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#" class="w3_google"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#" class="w3_pinterest"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#" class="w3_vimeo"><i class="fa fa-vimeo"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="w3_info">
+                    <h2 class=" text-uppercase" style="padding-bottom: 20px; padding-top: 0; margin-top: 0;">ĐĂNG KÝ THÀNH VIÊN</h2>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <span style="color: red; font-weight: bold;">@Html.ValidationMessageFor(model => model.TaiKhoan)</span>
+                        <div class="input-group">
+                            <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                            @*<input type="text" placeholder="Tài khoản" required="">*@
+                            @*@Html.TextBox("TaiKhoan","", new { placeholder = "Tài khoản" })*@
+                            @Html.TextBoxFor(model => model.TaiKhoan, new { placeholder = "Tài khoản", name = "TaiKhoan", type = "text", @class = "TaiKhoan" })
+
+                        </div>
+
+                        <span style="color: red; font-weight: bold;">@Html.ValidationMessageFor(model => model.HoTen)</span>
+                        <div class="input-group">
+                            <span class=""><i class="fa fa-book" style="color:#01cd74;" aria-hidden="true"></i></span>
+                            @Html.TextBoxFor(model => model.HoTen, new { placeholder = "Họ Tên", type = "text", name = "HoTen", @class = "HoTen" })
+
+                            @*@Html.TextBox("HoTen", "", new { placeholder = "Họ Tên" })*@
+                        </div>
+
+                        <span style="color: red; font-weight: bold;">@Html.ValidationMessageFor(model => model.DiaChi)</span>
+                        <div class="input-group">
+                            <span><i class="fa fa-building-o" style="color:#01cd74;" aria-hidden="true"></i></span>
+                            @*@Html.TextBox("DiaChi", "", new { placeholder = "Địa chỉ" })*@
+                            @Html.TextBoxFor(model => model.DiaChi, new { placeholder = "Địa chỉ", @class = "DiaChi", name = "DiaChi" })
+
+                        </div>
+
+                        <span style="color: red; font-weight: bold;">@Html.ValidationMessageFor(model => model.Email)</span>
+                        <div class="input-group">
+                            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                            @*@Html.TextBox("Email", "", new { @class = "text", type = "email", placeholder = "Email" })*@
+                            @Html.TextBoxFor(model => model.Email, new { placeholder = "Email", type = "email", name = "Email" })
+
+                        </div>
+                        <div class="input-group">
+                            <span><i class="fa fa-phone" style="color:#01cd74;" aria-hidden="true"></i></span>
+                            @Html.TextBox("SoDienThoai", "", new { @class = "text", placeholder = "Số điện thoại", name = "SoDienThoai" })
+
+                        </div>
+                        <span style="color: red; font-weight: bold;">@Html.ValidationMessageFor(model => model.MatKhau)</span>
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            @*@Html.TextBox("MatKhau", "", new { type = "password", placeholder = "Mật khẩu" })*@
+                            @Html.TextBoxFor(model => model.MatKhau, new { placeholder = "Mật khẩu", type = "password" })
+                        </div>
+
+                        <div>
+                            <span>Câu hỏi bí mật</span>
+                            @*@Html.TextBox("CauHoi", "", new { placeholder = "Câu hỏi" })*@
+                            @Html.DropDownList("CauHoi")
+                        </div>
+                        <div class="input-group">
+                            <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                            @Html.TextBox("CauTraLoi", "", new { placeholder = "Câu trả lời", type = "password" })
+                        </div>
+                        <div>
+                            @Html.MathCaptcha()
+                            <span style="color:red; font-weight:bold;">@ViewBag.ThongBao</span>
+                        </div>
+
+
+                        <button class="btn btn-danger btn-block" type="submit" style="background-color:#01cd74; padding: 10px;" id="btnDangKy">Đăng ký</button>
+                        <h2>
+                            @Html.RouteLink("Click vào đây  để Đăng nhập", "TrangChu")
+                        </h2>
+                    }
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,64 @@
+﻿@using WebSiteDT.Models
+@using PagedList.Mvc;
+@model PagedList.IPagedList<SanPham>
+
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+
+<div class="col-md-12">
+    <!-- Product Single -->
+    @foreach (var item in Model.OrderBy(n => n.DonGia))
+    {
+
+        <div class="col-md-4 col-sm-6 col-xs-6">
+            <div class="product product-single">
+                <div class="product-thumb">
+                    <div class="product-label">
+                        <span>New</span>
+                        <span class="sale">-20%</span>
+                    </div>
+                    <h5 class="main-btn quick-view">
+                        <i class="fa fa-search-plus"></i>
+                        <a href="@Url.Action("XemChiTiet", "SanPham", new { id = item.MaSP })">
+                            Chi tiết
+                        </a>
+                    </h5>
+                    <img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" alt="" style="width: 150px; height: 150px;">
+                </div>
+                <div class="product-body">
+                    <h3 class="product-price">@item.DonGia.Value.ToString("#,##") VND <del class="product-old-price">@(item.DonGia.Value + 30000) VND</del></h3>
+                    <div class="product-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o empty"></i>
+                    </div>
+                    <h2 class="product-name"><a href="#">@item.TenSP</a></h2>
+                    <div class="product-btns">
+                        <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                        @* Thêm giỏ hàng *@
+                        <a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = item.MaSP , @strURL = Request.Url.ToString()} )" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Product Single -->
+
+    }
+    <!-- /Product Single -->
+    <div class="clearfix visible-sm visible-xs"></div>
+
+</div>
+
+<div class="row text-right">
+     <div class="dlink">
+          Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+          @Html.PagedListPager(Model, page => Url.Action("SanPham", new { page = page, @MaLoaiSP = ViewBag.MaLoaiSP, @MaNSX = ViewBag.MaNSX }))
+     </div>
+ </div>
+@*@Html.RouteLink("Click vào đây để vào trang chủ", "TrangChu")*@

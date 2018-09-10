@@ -1,0 +1,66 @@
+﻿
+@model WebSiteDT.Models.Quyen
+
+@{
+    ViewBag.Title = "ThemQuyen";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 p-b-10">
+            <div class="overview-wrap">
+                <h2 class="title-1">Thêm quyền</h2>
+                <h3 class="au-btn au-btn-icon">
+                    <i class="zmdi zmdi-plus"></i>
+                    @Html.ActionLink("Trở về", "Index")
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.Label("MaQuyen", "Mã quyền", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaQuyen)
+                    @Html.ValidationMessageFor(model => model.MaQuyen)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("TenQuyen", "Tên quyền", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenQuyen)
+                    @Html.ValidationMessageFor(model => model.TenQuyen)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Thêm" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+
+@*<h2>Thêm quyền</h2>
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>*@
+
+
+
+
+

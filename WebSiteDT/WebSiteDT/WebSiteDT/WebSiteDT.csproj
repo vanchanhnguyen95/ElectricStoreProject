@@ -1,0 +1,1228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6900BF6C-AA45-4B43-9943-E1895AE97013}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSiteDT</RootNamespace>
+    <AssemblyName>WebSiteDT</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CaptchaMvc, Version=2.5.0.0, Culture=neutral, PublicKeyToken=fe46ad421dd3b0e6, processorArchitecture=MSIL">
+      <HintPath>..\packages\CaptchaMvc.Mvc5.1.5.0\lib\net45-full\CaptchaMvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\CollectionModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ComplexTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\DictionaryModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\EnumValueDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\IModelDocumentationProvider.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\KeyValuePairModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelDescriptionGenerator.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameAttribute.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ModelNameHelper.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterAnnotation.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\ParameterDescription.cs" />
+    <Compile Include="Areas\HelpPage\ModelDescriptions\SimpleTypeModelDescription.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhanQuyenController.cs" />
+    <Compile Include="Controllers\QuanLyDonHangController.cs" />
+    <Compile Include="Controllers\QuanLyPhieuNhapController.cs" />
+    <Compile Include="Controllers\QuanLySanPhamController.cs" />
+    <Compile Include="Controllers\QuanLyThanhVienController.cs" />
+    <Compile Include="Controllers\QuyenController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\SweetController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BinhLuan.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietDonDatHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChiTietPhieuNhap.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonDatHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ItemGioHang.cs" />
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiThanhVien.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiThanhVien_Quyen.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Metadata\SanPham.cs" />
+    <Compile Include="Models\Metadata\ThanhVien.cs" />
+    <Compile Include="Models\NhaCungCap.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaSanXuat.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PhieuNhap.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuanLyBanHangModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quyen.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThanhVien.cs">
+      <DependentUpon>QuanLyBanHangModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\AdminLayout\css\font-face.css" />
+    <Content Include="Content\AdminLayout\css\theme.css" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-italic.svg" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-regular.svg" />
+    <Content Include="Content\AdminLayout\images\bg-title-01.jpg" />
+    <Content Include="Content\AdminLayout\images\bg-title-02.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-01.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-02.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-03.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-04.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-05.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-06.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\avatar-big-01.jpg" />
+    <Content Include="Content\AdminLayout\images\icon\logo-blue.png" />
+    <Content Include="Content\AdminLayout\images\icon\logo-mini.png" />
+    <Content Include="Content\AdminLayout\images\icon\logo-white.png" />
+    <Content Include="Content\AdminLayout\images\icon\logo.png" />
+    <Content Include="Content\AdminLayout\images\icon\Untitled-1.jpg" />
+    <Content Include="Content\AdminLayout\js\main.js" />
+    <Content Include="Content\AdminLayout\vendor\animsition\animsition.min.css" />
+    <Content Include="Content\AdminLayout\vendor\animsition\animsition.min.js" />
+    <Content Include="Content\AdminLayout\vendor\bootstrap-4.1\bootstrap.min.css" />
+    <Content Include="Content\AdminLayout\vendor\bootstrap-4.1\bootstrap.min.js" />
+    <Content Include="Content\AdminLayout\vendor\bootstrap-4.1\popper.min.js" />
+    <Content Include="Content\AdminLayout\vendor\bootstrap-progressbar\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Content\AdminLayout\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Content\AdminLayout\vendor\chartjs\Chart.bundle.min.js" />
+    <Content Include="Content\AdminLayout\vendor\circle-progress\circle-progress.js" />
+    <Content Include="Content\AdminLayout\vendor\circle-progress\circle-progress.min.js" />
+    <Content Include="Content\AdminLayout\vendor\countdown\countdowntime.js" />
+    <Content Include="Content\AdminLayout\vendor\countdown\jquery.countdown.min.js" />
+    <Content Include="Content\AdminLayout\vendor\countdown\moment-timezone-with-data.min.js" />
+    <Content Include="Content\AdminLayout\vendor\countdown\moment-timezone.min.js" />
+    <Content Include="Content\AdminLayout\vendor\countdown\moment.min.js" />
+    <Content Include="Content\AdminLayout\vendor\counter-up\jquery.counterup.min.js" />
+    <Content Include="Content\AdminLayout\vendor\counter-up\jquery.waypoints.min.js" />
+    <Content Include="Content\AdminLayout\vendor\counter-up\waypoints.min.js" />
+    <Content Include="Content\AdminLayout\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\AdminLayout\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\css\fontawesome-all.min.css" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\AdminLayout\vendor\jquery-3.2.1.min.js" />
+    <Content Include="Content\AdminLayout\vendor\jquery-ui.min.js" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\css\lightbox.css" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\images\close.png" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\images\loading.gif" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\images\next.png" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\images\prev.png" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\js\lightbox-plus-jquery.js" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\js\lightbox.js" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\js\lightbox.min.js" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\src\css\lightbox.css" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\src\images\close.png" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\src\images\loading.gif" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\src\images\next.png" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\src\images\prev.png" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\src\js\lightbox.js" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\AdminLayout\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\AdminLayout\vendor\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Content\AdminLayout\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Content\AdminLayout\vendor\progressbar\progressbar.js" />
+    <Content Include="Content\AdminLayout\vendor\progressbar\progressbar.min.js" />
+    <Content Include="Content\AdminLayout\vendor\select2\select2.min.css" />
+    <Content Include="Content\AdminLayout\vendor\select2\select2.min.js" />
+    <Content Include="Content\AdminLayout\vendor\slick\ajax-loader.gif" />
+    <Content Include="Content\AdminLayout\vendor\slick\fonts\slick.svg" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick-theme.css" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick.css" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick.js" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick.min.js" />
+    <Content Include="Content\AdminLayout\vendor\smk-accordion\accordion.css" />
+    <Content Include="Content\AdminLayout\vendor\smk-accordion\accordion.js" />
+    <Content Include="Content\AdminLayout\vendor\smk-accordion\accordion.min.js" />
+    <Content Include="Content\AdminLayout\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.brazil.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.europe.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.france.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.germany.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.min.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.russia.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.sampledata.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.usa.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jquery.vmap.world.js" />
+    <Content Include="Content\AdminLayout\vendor\vector-map\jqvmap.min.css" />
+    <Content Include="Content\AdminLayout\vendor\wow\animate.css" />
+    <Content Include="Content\AdminLayout\vendor\wow\wow.min.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\nouislider.min.css" />
+    <Content Include="Content\css\slick-theme.css" />
+    <Content Include="Content\css\slick.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\DangKy\css\font-awesome.min.css" />
+    <Content Include="Content\DangKy\css\style.css" />
+    <Content Include="Content\DangKy\images\2.jpg" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\HinhAnhSP\0201_Sonyvaiopro13-1.jpg" />
+    <Content Include="Content\HinhAnhSP\1-141023232635.jpg" />
+    <Content Include="Content\HinhAnhSP\1.jpg" />
+    <Content Include="Content\HinhAnhSP\12226700_1009231122431681_1745030512_n.jpg" />
+    <Content Include="Content\HinhAnhSP\12231372_1009226802432113_1184438083_n.jpg" />
+    <Content Include="Content\HinhAnhSP\1397272_5b1684c5cdf18acf2aa3d4478c3b3975.jpg" />
+    <Content Include="Content\HinhAnhSP\150608_iphone_concept_1.jpg" />
+    <Content Include="Content\HinhAnhSP\321321.jpg" />
+    <Content Include="Content\HinhAnhSP\324493-sony-vaio-pro-11.jpg" />
+    <Content Include="Content\HinhAnhSP\ACER-2215i.png" />
+    <Content Include="Content\HinhAnhSP\AcerA1-810-2CW-316T.png" />
+    <Content Include="Content\HinhAnhSP\AcerA1-811-G2CG-316T.png" />
+    <Content Include="Content\HinhAnhSP\AcerA101-16GB.png" />
+    <Content Include="Content\HinhAnhSP\AcerA101-Red.png" />
+    <Content Include="Content\HinhAnhSP\AcerB1-A71-83170501NK.png" />
+    <Content Include="Content\HinhAnhSP\AcerE1-432.png" />
+    <Content Include="Content\HinhAnhSP\AcerE1-470-01.png" />
+    <Content Include="Content\HinhAnhSP\AcerE1-470-02.png" />
+    <Content Include="Content\HinhAnhSP\AcerE1-470G.png" />
+    <Content Include="Content\HinhAnhSP\AcerE1-472.png" />
+    <Content Include="Content\HinhAnhSP\AcerE1-572.png" />
+    <Content Include="Content\HinhAnhSP\AcerIconiaTabW511.png" />
+    <Content Include="Content\HinhAnhSP\AcerP3-171.png" />
+    <Content Include="Content\HinhAnhSP\AcerTAB-A101.png" />
+    <Content Include="Content\HinhAnhSP\AcerTAB-A501.png" />
+    <Content Include="Content\HinhAnhSP\AcerV3-471.png" />
+    <Content Include="Content\HinhAnhSP\AcerV5-471.png" />
+    <Content Include="Content\HinhAnhSP\AcerV5-471G.png" />
+    <Content Include="Content\HinhAnhSP\AcerW501.png" />
+    <Content Include="Content\HinhAnhSP\AcerW510-27602G06ISS.png" />
+    <Content Include="Content\HinhAnhSP\AcerW511-27602G06ASS.png" />
+    <Content Include="Content\HinhAnhSP\AP-ME294ZP.png" />
+    <Content Include="Content\HinhAnhSP\AppleMC975ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMC976ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD101ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD102ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD103ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD104ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD223ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD224ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD231ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\AppleMD232ZP-A.png" />
+    <Content Include="Content\HinhAnhSP\Apple_iPad_Air_Silver_600_lq_0001.jpg" />
+    <Content Include="Content\HinhAnhSP\Apple_MBA11_LW007.jpg74ddbdf5-e3ab-4f55-883f-2a7ca1f52652Original.jpg" />
+    <Content Include="Content\HinhAnhSP\ASUS-S1750.png" />
+    <Content Include="Content\HinhAnhSP\Asus10-ME102A.png" />
+    <Content Include="Content\HinhAnhSP\asus3.jpg" />
+    <Content Include="Content\HinhAnhSP\asus4.png" />
+    <Content Include="Content\HinhAnhSP\AsusF451CA-VX123D.png" />
+    <Content Include="Content\HinhAnhSP\ASUSFONEPADME371MG.png" />
+    <Content Include="Content\HinhAnhSP\AsusME175CG-8G.png" />
+    <Content Include="Content\HinhAnhSP\AsusME180A-8G.png" />
+    <Content Include="Content\HinhAnhSP\AsusME372CG-16G.png" />
+    <Content Include="Content\HinhAnhSP\AsusME372CG-8G.png" />
+    <Content Include="Content\HinhAnhSP\AsusME560CG-1A052A-32G.png" />
+    <Content Include="Content\HinhAnhSP\AsusME560CG-1B052A-32G.png" />
+    <Content Include="Content\HinhAnhSP\AsusME571K-1C018A-8G.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450CC-WX009.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450CC-WX016.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450L-WX014D.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450L-WX035D.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450LA-WX021.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450LA-WX022D.png" />
+    <Content Include="Content\HinhAnhSP\AsusX450LC-WX035.png" />
+    <Content Include="Content\HinhAnhSP\AsusX550CC-XO032D.png" />
+    <Content Include="Content\HinhAnhSP\AsusX550LD-XX144D.png" />
+    <Content Include="Content\HinhAnhSP\asus_1.jpg" />
+    <Content Include="Content\HinhAnhSP\asus_2.png" />
+    <Content Include="Content\HinhAnhSP\b31.jpg" />
+    <Content Include="Content\HinhAnhSP\Blackberry9220.png" />
+    <Content Include="Content\HinhAnhSP\Blackberry9320.png" />
+    <Content Include="Content\HinhAnhSP\Blackberry9790.png" />
+    <Content Include="Content\HinhAnhSP\BlackBerryCurve9220.png" />
+    <Content Include="Content\HinhAnhSP\BlackberryQ10.png" />
+    <Content Include="Content\HinhAnhSP\BlackberryZ10.png" />
+    <Content Include="Content\HinhAnhSP\BlackberryZ30.png" />
+    <Content Include="Content\HinhAnhSP\cubotvip.png" />
+    <Content Include="Content\HinhAnhSP\cubot_x15_1.jpg" />
+    <Content Include="Content\HinhAnhSP\cubot_x15_2.jpg" />
+    <Content Include="Content\HinhAnhSP\cubot_x15_3.jpg" />
+    <Content Include="Content\HinhAnhSP\cubot_x15_4.jpg" />
+    <Content Include="Content\HinhAnhSP\cubot_x15_5.jpg" />
+    <Content Include="Content\HinhAnhSP\cubox15_1.png" />
+    <Content Include="Content\HinhAnhSP\cubox15_2.png" />
+    <Content Include="Content\HinhAnhSP\cubox15_3.png" />
+    <Content Include="Content\HinhAnhSP\cubox15_4.png" />
+    <Content Include="Content\HinhAnhSP\DELL-11721PS.png" />
+    <Content Include="Content\HinhAnhSP\DELL-9943XL.png" />
+    <Content Include="Content\HinhAnhSP\DELL-9943XL2.png" />
+    <Content Include="Content\HinhAnhSP\DELL-9943XL22.png" />
+    <Content Include="Content\HinhAnhSP\DELL-9943XL2222.png" />
+    <Content Include="Content\HinhAnhSP\DELL14-3437.png" />
+    <Content Include="Content\HinhAnhSP\DELL14R-D8MMY1.png" />
+    <Content Include="Content\HinhAnhSP\DELL15-52GNP1.png" />
+    <Content Include="Content\HinhAnhSP\DELL15-52GNP4.png" />
+    <Content Include="Content\HinhAnhSP\DELL15-7537.png" />
+    <Content Include="Content\HinhAnhSP\DELL15-N3521.png" />
+    <Content Include="Content\HinhAnhSP\DELL15R-5537.png" />
+    <Content Include="Content\HinhAnhSP\DELL3440.png" />
+    <Content Include="Content\HinhAnhSP\DELLN3437A.png" />
+    <Content Include="Content\HinhAnhSP\DELLN5437A.png" />
+    <Content Include="Content\HinhAnhSP\design_hero.jpg" />
+    <Content Include="Content\HinhAnhSP\GalaxyG7102.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyK-Zoom.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyN9000.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyNote-10-P601.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyNote-8-N5100.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyNote3-Neo.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyNotePro-12-2.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyS4-I9500.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyS5.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyS7392.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyS7580.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-3-10-P5200.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-3-8-T311.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-3-Lite7-3G.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-3-Lite7-Wifi.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-4-10-T531.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-4-7.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyTab-4-8-T331.png" />
+    <Content Include="Content\HinhAnhSP\GalaxyY-S5360.png" />
+    <Content Include="Content\HinhAnhSP\Gear2-Neo.png" />
+    <Content Include="Content\HinhAnhSP\GoogleNexus7-16G.png" />
+    <Content Include="Content\HinhAnhSP\GoogleNexus7-32G.png" />
+    <Content Include="Content\HinhAnhSP\HP-3175.png" />
+    <Content Include="Content\HinhAnhSP\HP-3421s.png" />
+    <Content Include="Content\HinhAnhSP\HP1000-1404TU.png" />
+    <Content Include="Content\HinhAnhSP\HP1000-1418TU.png" />
+    <Content Include="Content\HinhAnhSP\HP14-b068TX.png" />
+    <Content Include="Content\HinhAnhSP\HP14-d008TU.png" />
+    <Content Include="Content\HinhAnhSP\HP14-d009TU.png" />
+    <Content Include="Content\HinhAnhSP\HP14-d010TU.png" />
+    <Content Include="Content\HinhAnhSP\HP15-D062TU.png" />
+    <Content Include="Content\HinhAnhSP\HP15-N052TX.png" />
+    <Content Include="Content\HinhAnhSP\HP4-1214TU.png" />
+    <Content Include="Content\HinhAnhSP\HP450-D5J85PA.png" />
+    <Content Include="Content\HinhAnhSP\HTC-8S.png" />
+    <Content Include="Content\HinhAnhSP\HTC-8X.png" />
+    <Content Include="Content\HinhAnhSP\HTC-L.png" />
+    <Content Include="Content\HinhAnhSP\HTC-OneM8.png" />
+    <Content Include="Content\HinhAnhSP\HTC-U.png" />
+    <Content Include="Content\HinhAnhSP\HTC310.png" />
+    <Content Include="Content\HinhAnhSP\HTC700.png" />
+    <Content Include="Content\HinhAnhSP\HTCONE-32G.png" />
+    <Content Include="Content\HinhAnhSP\HTCONE-GOLD-32G.png" />
+    <Content Include="Content\HinhAnhSP\HTCONE-M8.png" />
+    <Content Include="Content\HinhAnhSP\HTCSV.png" />
+    <Content Include="Content\HinhAnhSP\htc_one_1.JPG" />
+    <Content Include="Content\HinhAnhSP\htc_one_1.png" />
+    <Content Include="Content\HinhAnhSP\htc_one_2.jpg" />
+    <Content Include="Content\HinhAnhSP\htc_one_2.png" />
+    <Content Include="Content\HinhAnhSP\htc_one_3.jpg" />
+    <Content Include="Content\HinhAnhSP\htc_one_3.png" />
+    <Content Include="Content\HinhAnhSP\htc_one_4.jpg" />
+    <Content Include="Content\HinhAnhSP\htc_one_4.png" />
+    <Content Include="Content\HinhAnhSP\htc_one_5.jpg" />
+    <Content Include="Content\HinhAnhSP\htc_one_6.jpg" />
+    <Content Include="Content\HinhAnhSP\htc_one_7.jpg" />
+    <Content Include="Content\HinhAnhSP\htc_one_8.JPG" />
+    <Content Include="Content\HinhAnhSP\ipad air blue.jpg" />
+    <Content Include="Content\HinhAnhSP\Ipad-ME840TH.png" />
+    <Content Include="Content\HinhAnhSP\IpadAir-32G.png" />
+    <Content Include="Content\HinhAnhSP\IpadAir-Cellular-128G.png" />
+    <Content Include="Content\HinhAnhSP\IpadAir-Cellular-16G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-128G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-16G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-32G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-64G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-Cellular-16G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-Cellular-32G.png" />
+    <Content Include="Content\HinhAnhSP\IpadMini-Cellular-64G.png" />
+    <Content Include="Content\HinhAnhSP\ipad_air_1.png" />
+    <Content Include="Content\HinhAnhSP\ipad_air_2.png" />
+    <Content Include="Content\HinhAnhSP\ipad_air_3.png" />
+    <Content Include="Content\HinhAnhSP\ipad_air_4.png" />
+    <Content Include="Content\HinhAnhSP\iphone-6-201421010614.jpg" />
+    <Content Include="Content\HinhAnhSP\iphone-7-concept-display-design-hello_UTMY.jpg" />
+    <Content Include="Content\HinhAnhSP\iPhone-7-Images-8.jpg" />
+    <Content Include="Content\HinhAnhSP\Iphone4-8G.png" />
+    <Content Include="Content\HinhAnhSP\Iphone4S-8G.png" />
+    <Content Include="Content\HinhAnhSP\Iphone5-16G.png" />
+    <Content Include="Content\HinhAnhSP\Iphone5-32G.png" />
+    <Content Include="Content\HinhAnhSP\Iphone5C.png" />
+    <Content Include="Content\HinhAnhSP\Iphone5S-16G-GOLD.png" />
+    <Content Include="Content\HinhAnhSP\Iphone5S-16G.PNG" />
+    <Content Include="Content\HinhAnhSP\Iphone5S-32G-GOLD.png" />
+    <Content Include="Content\HinhAnhSP\Iphone5S-64G.PNG" />
+    <Content Include="Content\HinhAnhSP\iphone_1.png" />
+    <Content Include="Content\HinhAnhSP\iphone_2.png" />
+    <Content Include="Content\HinhAnhSP\iphone_3.png" />
+    <Content Include="Content\HinhAnhSP\iphone_4.png" />
+    <Content Include="Content\HinhAnhSP\l84208-macbook-pro-13-inch-43364.jpg" />
+    <Content Include="Content\HinhAnhSP\large_apple_macbook_air_13_inch_retina_3d_model_fbx_c4d_obj_hrc_xsi_max_cb5de0c0-ddf7-4684-896d-7d68ae017f13.jpg" />
+    <Content Include="Content\HinhAnhSP\lg-g-flex-smartphone-leak-photos.jpg" />
+    <Content Include="Content\HinhAnhSP\LGG-686.png" />
+    <Content Include="Content\HinhAnhSP\LGG-D682.png" />
+    <Content Include="Content\HinhAnhSP\LGG-E988.png" />
+    <Content Include="Content\HinhAnhSP\LGG-Flex.png" />
+    <Content Include="Content\HinhAnhSP\LGG-Pro2.png" />
+    <Content Include="Content\HinhAnhSP\LGG2-32G.png" />
+    <Content Include="Content\HinhAnhSP\LGG2-D802-16G.png" />
+    <Content Include="Content\HinhAnhSP\LGG2.png" />
+    <Content Include="Content\HinhAnhSP\LGL70.png" />
+    <Content Include="Content\HinhAnhSP\LGL90.png" />
+    <Content Include="Content\HinhAnhSP\LGOptimusSolE730.png" />
+    <Content Include="Content\HinhAnhSP\logo.png" />
+    <Content Include="Content\HinhAnhSP\Lumia920.png" />
+    <Content Include="Content\HinhAnhSP\m9plus.png" />
+    <Content Include="Content\HinhAnhSP\MacBook-Air-1024x515.png" />
+    <Content Include="Content\HinhAnhSP\macbook-air-retina.jpg" />
+    <Content Include="Content\HinhAnhSP\macbook_1.png" />
+    <Content Include="Content\HinhAnhSP\macbook_2.png" />
+    <Content Include="Content\HinhAnhSP\macbook_3.png" />
+    <Content Include="Content\HinhAnhSP\macbook_4.png" />
+    <Content Include="Content\HinhAnhSP\MacBook_air_11_550.jpg" />
+    <Content Include="Content\HinhAnhSP\macbook_pro_1.png" />
+    <Content Include="Content\HinhAnhSP\macbook_pro_2.png" />
+    <Content Include="Content\HinhAnhSP\macbook_pro_3.png" />
+    <Content Include="Content\HinhAnhSP\macbook_pro_4.png" />
+    <Content Include="Content\HinhAnhSP\macpro.png" />
+    <Content Include="Content\HinhAnhSP\mac_air_1.png" />
+    <Content Include="Content\HinhAnhSP\maxresdefault.jpg" />
+    <Content Include="Content\HinhAnhSP\New-Samsung-Rumors.jpg" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-1020.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-1320-2.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-1320.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-1520.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-525.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-625.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-630.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-920.png" />
+    <Content Include="Content\HinhAnhSP\NokiaLumia-925.png" />
+    <Content Include="Content\HinhAnhSP\NokiaX.png" />
+    <Content Include="Content\HinhAnhSP\perfektes-Smartphone_qu.jpg" />
+    <Content Include="Content\HinhAnhSP\pre-order-iphone6.jpg" />
+    <Content Include="Content\HinhAnhSP\Samsung-4401s.png" />
+    <Content Include="Content\HinhAnhSP\samsung-galaxy-tab-s-10.5-retail-1-e1419704627986.jpg" />
+    <Content Include="Content\HinhAnhSP\samsung-galaxy-tab-s-best-android-tablets-2015-images.jpg" />
+    <Content Include="Content\HinhAnhSP\samsung-galaxy-tab-s.jpg" />
+    <Content Include="Content\HinhAnhSP\Samsung300E7A-S03.png" />
+    <Content Include="Content\HinhAnhSP\Samsung5-535U3X.png" />
+    <Content Include="Content\HinhAnhSP\Samsung900X3A.png" />
+    <Content Include="Content\HinhAnhSP\SAMSUNGGALAXY3LITESM-T111.png" />
+    <Content Include="Content\HinhAnhSP\SamSunggalaxyS5-SMG900H.png" />
+    <Content Include="Content\HinhAnhSP\SamsungNP270E4V-K01VN.png" />
+    <Content Include="Content\HinhAnhSP\SamsungNP270E4V-X01VN.png" />
+    <Content Include="Content\HinhAnhSP\SamsungNP530U4E-K01VN.png" />
+    <Content Include="Content\HinhAnhSP\SamsungNP540U4E-K01VN.png" />
+    <Content Include="Content\HinhAnhSP\SamsungNP700Z3A-S01US.png" />
+    <Content Include="Content\HinhAnhSP\SamsungNP900X3C.png" />
+    <Content Include="Content\HinhAnhSP\SamsungXE700T1C-A01VN.png" />
+    <Content Include="Content\HinhAnhSP\Samsung_Note_Pro_3_0_0 %281%29.jpg" />
+    <Content Include="Content\HinhAnhSP\sony-vaio-sve-1513b1ew.jpg" />
+    <Content Include="Content\HinhAnhSP\sony-vaio-T14_Silver-2.jpg" />
+    <Content Include="Content\HinhAnhSP\Sony-Vio7431.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF14217SGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF1421DSGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF1421ESGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF1421ESGW.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF1421QSGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF1421QSGW.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVF1521DSGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVP13223SGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVP13223SGW.png" />
+    <Content Include="Content\HinhAnhSP\SonyVaio-SVT11215SGB.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-C-C2305.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-E-C1505.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-E1.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-L-C2105.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-L-MT25I.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-M-C1905.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-M2-D2305.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-ST23I.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-TX-LT29I.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-V-LT25I.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-Z.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperia-Z2.png" />
+    <Content Include="Content\HinhAnhSP\SONYXPERIAZ-SGP321.png" />
+    <Content Include="Content\HinhAnhSP\SonyXperiaZ.png" />
+    <Content Include="Content\HinhAnhSP\SQL.txt" />
+    <Content Include="Content\HinhAnhSP\tablet_ss_1.png" />
+    <Content Include="Content\HinhAnhSP\tablet_ss_2.png" />
+    <Content Include="Content\HinhAnhSP\tablet_ss_3.png" />
+    <Content Include="Content\HinhAnhSP\TOSHIBA-SYM0510.png" />
+    <Content Include="Content\HinhAnhSP\Ultimate-Smartphone-01 %281%29.jpg" />
+    <Content Include="Content\HinhAnhSP\Ultimate-Smartphone-01.jpg" />
+    <Content Include="Content\HinhAnhSP\untilmate_phone_1.png" />
+    <Content Include="Content\HinhAnhSP\untilmate_phone_2.png" />
+    <Content Include="Content\HinhAnhSP\untilmate_phone_3.png" />
+    <Content Include="Content\HinhAnhSP\untilmate_phone_4.jpg" />
+    <Content Include="Content\HinhAnhSP\vaio_1.png" />
+    <Content Include="Content\HinhAnhSP\vaio_2.png" />
+    <Content Include="Content\HinhAnhSP\vaio_3.png" />
+    <Content Include="Content\HinhAnhSP\vaio_4.png" />
+    <Content Include="Content\ImageHome\banner_Chinh.png" />
+    <Content Include="Content\img\banner01.jpg" />
+    <Content Include="Content\img\banner02.jpg" />
+    <Content Include="Content\img\banner03.jpg" />
+    <Content Include="Content\img\banner04.jpg" />
+    <Content Include="Content\img\banner05.jpg" />
+    <Content Include="Content\img\banner06.jpg" />
+    <Content Include="Content\img\banner07.jpg" />
+    <Content Include="Content\img\banner08.jpg" />
+    <Content Include="Content\img\banner09.jpg" />
+    <Content Include="Content\img\banner10.jpg" />
+    <Content Include="Content\img\banner11.jpg" />
+    <Content Include="Content\img\banner12.jpg" />
+    <Content Include="Content\img\banner13.jpg" />
+    <Content Include="Content\img\banner14.jpg" />
+    <Content Include="Content\img\banner15.jpg" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\main-product01.jpg" />
+    <Content Include="Content\img\main-product02.jpg" />
+    <Content Include="Content\img\main-product03.jpg" />
+    <Content Include="Content\img\main-product04.jpg" />
+    <Content Include="Content\img\product01.jpg" />
+    <Content Include="Content\img\product02.jpg" />
+    <Content Include="Content\img\product03.jpg" />
+    <Content Include="Content\img\product04.jpg" />
+    <Content Include="Content\img\product05.jpg" />
+    <Content Include="Content\img\product06.jpg" />
+    <Content Include="Content\img\product07.jpg" />
+    <Content Include="Content\img\product08.jpg" />
+    <Content Include="Content\img\thumb-product01.jpg" />
+    <Content Include="Content\img\thumb-product02.jpg" />
+    <Content Include="Content\img\thumb-product03.jpg" />
+    <Content Include="Content\img\thumb-product04.jpg" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.zoom.min.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\nouislider.min.js" />
+    <Content Include="Content\js\slick.min.js" />
+    <Content Include="Content\login\css\style.css" />
+    <Content Include="Content\login\js\canva_moving_effect.js" />
+    <Content Include="Content\login\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\login\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\login\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\login\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Slick\ajax-loader.gif" />
+    <Content Include="Content\Slick\fonts\slick.svg" />
+    <Content Include="Content\Slick\slick-theme.css" />
+    <Content Include="Content\Slick\slick.css" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\tinymce\changelog.txt" />
+    <Content Include="Content\tinymce\js\tinymce\jquery.tinymce.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\license.txt" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\help\img\logo.png" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\toc\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\content.mobile.min.css" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\skin.mobile.min.css" />
+    <Content Include="Content\tinymce\js\tinymce\themes\inlite\theme.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\themes\mobile\theme.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Content\tinymce\js\tinymce\tinymce.min.js" />
+    <Content Include="Content\tinymce\LICENSE.TXT" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\QuanLyBanHangModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanHangModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\QuanLyBanHangModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+      <LastGenOutput>QuanLyBanHangModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\ResourceModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\SimpleTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ModelDescriptionLink.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\KeyValuePairModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\EnumTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\DictionaryModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ComplexTypeModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Slick\slick.scss" />
+    <Content Include="Content\Slick\slick-theme.scss" />
+    <Content Include="Content\Slick\fonts\slick.woff" />
+    <Content Include="Content\Slick\fonts\slick.ttf" />
+    <Content Include="Content\Slick\fonts\slick.eot" />
+    <Content Include="Content\DangKy\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\DangKy\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\DangKy\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\DangKy\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\DangKy\fonts\FontAwesome.otf" />
+    <Content Include="Content\login\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\login\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\login\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\login\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\login\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\login\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\login\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\login\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\login\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\login\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\login\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\login\webfonts\fa-solid-900.woff2" />
+    <EntityDeploy Include="Models\QuanLyBanHangModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QuanLyBanHangModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QuanLyBanHangModel.edmx.diagram">
+      <DependentUpon>QuanLyBanHangModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-100italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-200italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-300italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-500italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-600italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-700italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-800italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-900italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-italic.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-italic.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-italic.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-italic.woff2" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-regular.eot" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-regular.ttf" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-regular.woff" />
+    <Content Include="Content\AdminLayout\fonts\poppins\poppins-v5-latin-regular.woff2" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\AdminLayout\vendor\font-awesome-5\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Content\AdminLayout\vendor\lightbox2\dist\js\lightbox.min.map" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\AdminLayout\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\AdminLayout\vendor\slick\config.rb" />
+    <Content Include="Content\AdminLayout\vendor\slick\fonts\slick.eot" />
+    <Content Include="Content\AdminLayout\vendor\slick\fonts\slick.ttf" />
+    <Content Include="Content\AdminLayout\vendor\slick\fonts\slick.woff" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick-theme.less" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick-theme.scss" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick.less" />
+    <Content Include="Content\AdminLayout\vendor\slick\slick.scss" />
+    <Content Include="Content\tinymce\js\tinymce\langs\readme.md" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-mobile.woff" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Content\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Slick\slick.js" />
+    <Content Include="Scripts\Slick\slick.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Layout\HomeLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\MenuPartial.cshtml" />
+    <Content Include="Views\SanPham\SanPhamStyle1Partial.cshtml" />
+    <Content Include="Views\SanPham\SanPhamStyle2Partial.cshtml" />
+    <Content Include="Views\SanPham\SanPhamStyle3Partial.cshtml" />
+    <Content Include="Views\SanPham\SanPhamStyle4Partial.cshtml" />
+    <Content Include="Views\Layout\ProductLayout.cshtml" />
+    <Content Include="Views\SanPham\XemChiTiet.cshtml" />
+    <Content Include="Views\SanPham\SanPham.cshtml" />
+    <Content Include="Views\Layout\HeaderTopPartital.cshtml" />
+    <Content Include="Views\GioHang\XemGioHang.cshtml" />
+    <Content Include="Views\GioHang\GioHangPartial.cshtml" />
+    <Content Include="Views\GioHang\ThongBao.cshtml" />
+    <Content Include="Views\GioHang\SuaGioHang.cshtml" />
+    <Content Include="Views\TimKiem\KQTimKiem.cshtml" />
+    <Content Include="Views\TimKiem\KQTimKiemPartial.cshtml" />
+    <Content Include="Views\Layout\AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\Index.cshtml" />
+    <Content Include="Views\QuanLySanPham\TaoMoi.cshtml" />
+    <Content Include="Views\QuanLySanPham\ChinhSua.cshtml" />
+    <Content Include="Views\QuanLySanPham\Xoa.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\NhapHang.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\DSSPHetHang.cshtml" />
+    <Content Include="Views\QuanLyPhieuNhap\NhapHangDon.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DuyetDonHang.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChuaThanhToan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChuaGiao.cshtml" />
+    <Content Include="Views\QuanLyDonHang\DaGiaoDaThanhToan.cshtml" />
+    <Content Include="Views\ThongKe\ThongKe.cshtml" />
+    <Content Include="Views\Home\LoiPhanQuyen.cshtml" />
+    <Content Include="Views\PhanQuyen\Index.cshtml" />
+    <Content Include="Views\PhanQuyen\PhanQuyen.cshtml" />
+    <Content Include="Views\Quyen\Index.cshtml" />
+    <Content Include="Views\Quyen\ThemQuyen.cshtml" />
+    <Content Include="Views\Home\CategoryPartial.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\Index.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\ThemThanhVien.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\ChinhSuaThanhVien.cshtml" />
+    <Content Include="Views\QuanLyThanhVien\XoaThanhVien.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
+    <Content Include="Views\Layout\AboutLayout.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\QuanLyNhapHang\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63952</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63952/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

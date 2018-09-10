@@ -1,0 +1,132 @@
+﻿
+@using WebSiteDT.Models
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+@* Bước 1: Bóc tách code và lồng Partial View *@
+
+@*Ép kiểu ViewBac về và gửi đến Partial, có 3 cách  *@
+@{
+    IEnumerable<SanPham> lstDTM = (IEnumerable<SanPham>)ViewBag.ListDTM;
+    IEnumerable<SanPham> lstLTM = ViewBag.ListLTM as IEnumerable<SanPham>;//Kiểu này sẽ ko có lỗi khi k có dữ liệu mà trả về null
+    IEnumerable<SanPham> lstMTBM = ViewBag.ListlstMTBM as IEnumerable<SanPham>;
+}
+
+@* Bước 2: Gán dữ liệu từ Controller thông qua ViewBag vào Partial View *@
+
+
+<div>
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- banner -->
+                <div class="col-md-4 col-sm-6">
+                    <a class="banner banner-1" href="#">
+                        <img src="~/Content/ImageHome/collection1.PNG" alt="">
+                        <div class="banner-caption text-center">
+                            <h1 class="primary-color">LAPTOP COLLECTION</h1>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+                <!-- banner -->
+                <div class="col-md-4 col-sm-6">
+                    <a class="banner banner-1" href="#">
+                        <img src="~/Content/ImageHome/collection2.png" alt="">
+                        <div class="banner-caption text-center">
+                            <h1 class="primary-color">IPAD COLLECTION</h1>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+                <!-- banner -->
+                <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3">
+                    <a class="banner banner-1" href="#">
+                        <img src="~/Content/ImageHome/collection4.png" alt="">
+                        <div class="banner-caption text-center">
+                            <h1 class="primary-color">MOBILE COLLECTION</h1>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+    <!-- section -->
+    <div class="section section-grey">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- banner -->
+                <div class="col-md-8">
+                    <div class="banner banner-1">
+                        <img src="~/Content/ImageHome/deal1.png" alt="">
+                        <div class="banner-caption text-center">
+                            <h1 class="primary-color">HOT DEAL<br><span class="white-color font-weak">Up to 50% OFF</span></h1>
+                            <button class="primary-btn">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /banner -->
+                <!-- banner -->
+                <div class="col-md-4 col-sm-6">
+                    <a class="banner banner-1" href="#">
+                        <img src="~/Content/ImageHome/deal2.png" alt="">
+                        <div class="banner-caption text-center">
+                            <h2 class="primary-color">SAMSUNG COLLECTION</h2>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+                <!-- banner -->
+                <div class="col-md-4 col-sm-6">
+                    <a class="banner banner-1" href="#">
+                        <img src="~/Content/ImageHome//deal3.png" alt="">
+                        <div class="banner-caption text-center">
+                            <h2 class="primary-color">MOBILE COLLECTION</h2>
+                        </div>
+                    </a>
+                </div>
+                <!-- /banner -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            @* SanPhamStyle1Partial *@
+            @Html.Partial("~/Views/SanPham/SanPhamStyle1Partial.cshtml", lstDTM)
+            <!-- /row -->
+            <!-- row -->
+            @* SanPhamStyle3Partial *@
+            @Html.Partial("~/Views/SanPham/SanPhamStyle3Partial.cshtml", lstMTBM)
+            <!-- /row -->
+            <!-- row -->
+            @* SanPhamStyle4Partial *@
+            @Html.Partial("~/Views/SanPham/SanPhamStyle4Partial.cshtml", lstLTM)
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+</div>
+

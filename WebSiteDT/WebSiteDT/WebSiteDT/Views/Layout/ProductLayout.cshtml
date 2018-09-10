@@ -1,0 +1,278 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+@* Phần thẻ Head *@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Website bán hàng điện tử</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/slick.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/css/slick-theme.css">
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/nouislider.min.css">
+
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+
+    @* Thêm từ asp.net mvc *@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Content/css/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+@* Kết thúc thẻ Head *@
+
+<body>
+    <!-- HEADER -->
+    <header>
+        @Html.Partial("~/Views/Layout/HeaderTopPartital.cshtml")
+    </header>
+    <!-- /HEADER -->
+    <!-- NAVIGATION -->
+    <div id="navigation">
+        <!-- container -->
+        <div class="container">
+            <div id="responsive-nav">
+                <!-- category nav -->
+                <div class="category-nav show-on-click">
+                    @Html.Action("CategoryPartial", "Home")
+                </div>
+                <!-- /category nav -->
+                <!-- menu nav -->
+                <div class="menu-nav">
+                    <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+                    @Html.Action("MenuPartial", "Home")
+
+                </div>
+                <!-- menu nav -->
+
+            </div>
+        </div>
+        <!-- /container -->
+    </div>
+
+
+    <!-- /NAVIGATION -->
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- ASIDE -->
+                <div id="aside" class="col-md-3">
+                    <!-- aside widget -->
+                    <div class="aside">
+                        <h3 class="aside-title" >Lemon Shop:</h3>
+
+
+                        <ul class="filter-list">
+                            <li><span class="text-uppercase">Giá:</span></li>
+                            <li><a href="#">MIN: $20.00</a></li>
+                            <li><a href="#">MAX: $120.00</a></li>
+                        </ul>
+
+                        <ul class="filter-list">
+                            <li><span class="text-uppercase">Sản phẩm:</span></li>
+                            <li><a href="#">Hot</a></li>
+                        </ul>
+
+                        <button class="primary-btn">Xóa hết</button>
+                    </div>
+                    <!-- /aside widget -->
+                   
+                    <!-- aside widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Thương hiệu</h3>
+                        <ul class="list-links">
+                            <li><a href="#">Apple</a></li>
+                            <li><a href="#">Sam Sung</a></li>
+                            <li><a href="#">Nokia</a></li>
+                            <li><a href="#">Xiaomi</a></li>
+                        </ul>
+                    </div>
+                    <!-- /aside widget -->
+                    <!-- aside widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Laptop mới</h3>
+                        <ul class="list-links">
+                            <li class="active"><a href="#">Dell</a></li>
+                            <li><a href="#">Hp</a></li>
+                        </ul>
+                    </div>
+                    <!-- /aside widget -->
+                    <!-- aside widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Top sản phẩm hot </h3>
+                        <!-- widget product -->
+                        <div class="product product-widget">
+                            <div class="product-thumb">
+                                <img src="~/Content/HinhAnhSP/Iphone5-32G.png" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h2 class="product-name"><a href="#">Iphone 5S-32G-GOLD</a></h2>
+                                <h3 class="product-price">19,480,000 VND <del class="product-old-price">23,376,000 VND</del></h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /widget product -->
+                        <!-- widget product -->
+                        <div class="product product-widget">
+                            <div class="product-thumb">
+                                <img src="~/Content/HinhAnhSP/GalaxyS5.png" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h2 class="product-name"><a href="#">Galaxy S5</a></h2>
+                                <h3 class="product-price">15,990,000 VND</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o empty"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /widget product -->
+                    </div>
+                    <!-- /aside widget -->
+                </div>
+                <!-- /ASIDE -->
+
+                <div id="main" class="col-md-9">
+                    @RenderBody()
+                </div>
+
+
+
+                <!-- /MAIN -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+    <!-- FOOTER -->
+    <footer id="footer" class="section section-grey">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- footer widget -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <!-- footer logo -->
+                        <div class="footer-logo">
+                            <a class="logo" href="@Url.Action("Index", "Home")">
+                                <h2 class="logo text-uppercase font" href="@Url.Action("Index","Home")" style="font-weight: bold;">
+                                    @*<img src="~/Content/img/logo.png" alt="">*@
+                                    Lemon <span style="color: #F8694A">Shop</span>
+                                </h2>
+                            </a>
+                        </div>
+                        <!-- /footer logo -->
+
+                        <p>Lemon Shop: chuyên cung cấp các mặt hàng điện thoại, máy tính bảng, laptop chính hãng</p>
+
+                        <!-- footer social -->
+                        <ul class="footer-social">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        </ul>
+                        <!-- /footer social -->
+                    </div>
+                </div>
+                <!-- /footer widget -->
+                <!-- footer widget -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-header">Thông tin</h3>
+                        <ul class="list-links">
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Giao hàng và thanh toán</a></li>
+                            <li><a href="#">Gửi ý, khiếu nại</a></li>
+                            <li><a href="#">Mua trả góp</a></li>
+                            <li><a href="#">Xem bán mobile</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /footer widget -->
+
+                <div class="clearfix visible-sm visible-xs"></div>
+
+                <!-- footer widget -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-header">DỊCH VỤ KHÁCH HÀNG</h3>
+                        <ul class="list-links">
+                            <li><a href="#">VỀ CHÚNG TÔI</a></li>
+                            <li><a href="#">CHÍNH SÁCH ĐỔI TRẢ</a></li>
+                            <li><a href="#">MIỄN PHÍ VẬN CHUYỂN</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /footer widget -->
+                <!-- footer subscribe -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="footer">
+                        <h3 class="footer-header">Đam mê công nghệ </h3>
+                        <p>Gửi email của bạn để nhận được những thông tin mới nhất.</p>
+                        <form>
+                            <div class="form-group">
+                                <input class="input" placeholder="Vui lòng hoàn thành email...">
+                            </div>
+                            <button class="primary-btn">THAM GIA</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /footer subscribe -->
+            </div>
+            <!-- /row -->
+            <hr>
+        </div>
+        <!-- /container -->
+    </footer>
+    <!-- /FOOTER -->
+    <!-- jQuery Plugins -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/slick.min.js"></script>
+    <script src="~/Content/js/slick.min.js"></script>
+    <script src="~/Scripts/Slick/slick.min.js"></script>
+    <script src="~/Content/js/nouislider.min.js"></script>
+    <script src="~/Content/js/jquery.zoom.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+</body>
+</html>
+

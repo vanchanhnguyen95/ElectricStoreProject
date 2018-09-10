@@ -1,0 +1,94 @@
+﻿@model WebSiteDT.Models.SanPham
+
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@*Bước 1: Sử dụng control datetimepicker chèn 3 file script*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+@*Bước 1 khi sử dụng control editor tinymce*@
+<script src="~/Content/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: ".textarea",
+        //plugins: [
+        //    "advlist autolink lists link image charmap print preview anchor",
+        //    "searchreplace visualblocks code fullscreen",
+        //    "insertdatetime media table contextmenu paste"
+        //],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+</script>
+
+
+@*Bước 2: Xây dựng 1 function để điều hướng thẻ html theo dạng control datepicker*@
+<script>
+    $(function () {
+        $(".date").datepicker();
+    });
+</script>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 p-b-10">
+            <div class="overview-wrap">
+                <h2 class="title-1">Xóa sản phẩm</h2>
+                <h3 class="au-btn au-btn-icon">
+                    <i class="zmdi zmdi-plus"></i>
+                    @*@Html.ActionLink("Thêm quyền", "ThemQuyen", null, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Trở về", "Index")
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+            @using (Html.BeginForm("Xoa", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true)
+                    @Html.Hidden("MaSP", Model.MaSP);
+
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 col-form-label">Tên sản phẩm</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenSP)
+                            @Html.ValidationMessageFor(model => model.TenSP)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 col-form-label">Đơn giá</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DonGia)
+                            @Html.ValidationMessageFor(model => model.DonGia)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 col-form-label">Hình ảnh</label>
+                        <div class="col-md-10">
+                            <input id="HinhAnh" name="HinhAnh" type="file" />
+                            <span style="color:red;">@ViewBag.upload </span>
+                            <br />
+                            <img src="@Url.Content("~/Content/HinhAnhSP/"+Model.HinhAnh)" width="250" height="100" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+</div>
+

@@ -1,0 +1,118 @@
+﻿
+@model IEnumerable<WebSiteDT.Models.SanPham>
+
+
+@{
+    //Bước 1:
+    int iDem = 0;//Đếm số lượng sản phẩm trên trang
+    int iSLSanPhamTrenTrang = 6; // Số lượng sản phẩm trên 1 trang
+    int iTrang = 1; //Số trang
+
+}
+
+
+
+<div class="col-md-12">
+    <div>
+        <!-- Product Single -->
+        @foreach (var item in Model.OrderBy(n => n.DonGia))
+        {
+            if (iDem % iSLSanPhamTrenTrang == 0 && iDem != 0)
+            {
+                iTrang++;
+            }
+            iDem++;
+
+            <div class="@Url.Content("col-md-4 col-sm-6 col-xs-6 sanphamlink Trang"+iTrang.ToString())">
+                <div class="product product-single">
+                    <div class="product-thumb">
+                        <div class="product-label">
+                            <span>New</span>
+                            <span class="sale">-20%</span>
+                        </div>
+                        <h5 class="main-btn quick-view">
+                            <i class="fa fa-search-plus"></i>
+                            <a href="@Url.Action("XemChiTiet", "SanPham", new { id = item.MaSP })">
+                                Chi tiết
+                            </a>
+                        </h5>
+                        <img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" alt="" style="width: 150px; height: 150px;">
+                    </div>
+                    <div class="product-body">
+                        <h3 class="product-price">@item.DonGia.Value.ToString("#,##") VND <del class="product-old-price">@(item.DonGia.Value + 30000) VND</del></h3>
+                        <div class="product-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o empty"></i>
+                        </div>
+                        <h2 class="product-name"><a href="#">@item.TenSP</a></h2>
+                        <div class="product-btns">
+                            <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                            <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                            @* Thêm giỏ hàng *@
+                            <a href="#" data-masp="@item.MaSP" class="item_add btnThemGioHang primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Thêm</a>
+                            @*<a href="@Url.Action("ThemGioHang", "GioHang", new { @MaSP = item.MaSP , @strURL = Request.Url.ToString()} )" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Thêm</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Product Single -->
+
+        }
+        <!-- /Product Single -->
+        <div class="clearfix visible-sm visible-xs"></div>
+    </div>
+
+
+    
+</div>
+<div class="Trang text-right">
+    @for (int i = 1; i <= iTrang; i++)
+    {
+        <a class="linkTrang btn btn-info" data-sotrang="@Url.Content("Trang"+i) " href="#">@i</a>
+    }
+
+</div>
+
+@*Bước 2: Cho tất cả các trang ẩn hết và chỉ cho item nào thuộc trang 1 hiển thỉ*@
+<style>
+    .sanphamlink {
+        display: none;
+    }
+
+    .Trang2 {
+        display: block;
+    }
+</style>
+@*Bước 3: Xử lý khi click vào link trang nào thì show sản phẩm trang đó ra*@
+<script>
+    $('.linkTrang').click(function () {
+        //Cho tất cả các trang ẩn đi
+        $(".sanphamlink").hide();
+        //Lấy tra số trang từ thẻ a
+        var soTrang = $(this).attr("data-sotrang");
+        //Gọi những class nào thuộc soTrang đó thì hiển thị
+
+        $("."+soTrang).show();
+
+    });
+    $(".btnThemGioHang").click(function () {
+        var maSP = $(this).attr("data-masp");
+
+        $.ajax({
+            type: 'GET',
+            data: {
+                MaSP: maSP,
+
+            },
+            url: '@Url.Action("ThemGioHangAjax","GioHang")',
+            success: function (ketqua) {
+
+                $('#divGioHang').html(ketqua);
+            }
+        });
+    })
+
+</script>

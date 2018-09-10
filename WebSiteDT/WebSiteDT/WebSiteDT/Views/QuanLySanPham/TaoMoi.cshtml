@@ -1,0 +1,211 @@
+﻿@model WebSiteDT.Models.SanPham
+
+@{
+    ViewBag.Title = "TaoMoi";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+@*Bước 1: Sử dụng control datetimepicker chèn 3 file script*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+@*Bước 1 khi sử dụng control editor tinymce*@
+@*<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>*@
+<script src="~/Content/tinymce/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: ".textarea",
+        //plugins: [
+        //    "advlist autolink lists link image charmap print preview anchor",
+        //    "searchreplace visualblocks code fullscreen",
+        //    "insertdatetime media table contextmenu paste"
+        //],
+        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+    });
+</script>
+
+
+@*Bước 2: Xây dựng 1 function để điều hướng thẻ html theo dạng control datepicker*@
+<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>
+
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 p-b-10">
+            <div class="overview-wrap">
+                <h2 class="title-1">Thêm sản phẩm</h2>
+                <h3 class="au-btn au-btn-icon">
+                    <i class="zmdi zmdi-plus"></i>
+                    @*@Html.ActionLink("Thêm quyền", "ThemQuyen", null, new { @class = "btn btn-primary" })*@
+                    @Html.ActionLink("Trở về", "Index")
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+
+
+            @using (Html.BeginForm("TaoMoi", "QuanLySanPham", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true)
+
+                    <span style="color:red;">@Html.Raw(ViewBag.upload as string) <br /> @Html.Raw(ViewBag.upload1 as string) </span>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.TenSP, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Tên sản phẩm</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.TenSP)
+                            @Html.ValidationMessageFor(model => model.TenSP)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.DonGia, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Đơn giá</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DonGia)
+                            @Html.ValidationMessageFor(model => model.DonGia)
+                        </div>
+                    </div>
+                    @*Bước 3: đặt thêm thuộc tính class cho thẻ textbox*@
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.NgayCapNhap, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Ngày cập nhật</label>
+                        <div class="col-md-10">
+                            <input type="date" name="NgayCapNhat" id="datepicker" />
+                            @*@Html.TextBox("NgayCapNhap","", new { @id = "datepicker" })*@
+                            @Html.ValidationMessageFor(model => model.NgayCapNhap)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.CauHinh, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Cấu hình</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.CauHinh)
+                            @Html.ValidationMessageFor(model => model.CauHinh)
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.SoLuongTon, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Số lượng tồn</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.SoLuongTon)
+                            @Html.ValidationMessageFor(model => model.SoLuongTon)
+                        </div>
+                    </div>
+
+                 
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.Moi, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Mới</label>
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Moi)
+
+                        </div>
+                    </div>
+                    @*Để load đúng dữ liệu của dropdownlist thì các bạn cần truyền đúng tên (name) đúng với tên viewbag*@
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.MaNCC, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Nhà cung cấp</label>
+                        <div class="col-md-3">
+                            @Html.DropDownList("MaNCC", null, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.MaNSX, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Nhà sản xuất</label>
+                        <div class="col-md-3">
+                            @Html.DropDownList("MaNSX", null, new { @class = "form-control" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.MaLoaiSP, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Loại sản phẩm</label>
+                        <div class="col-md-3">
+                            @Html.DropDownList("MaLoaiSP", null, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaLoaiSP)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.HinhAnh, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Hình ảnh</label>
+                        <div class="col-md-10">
+                            <input id="HinhAnh" name="HinhAnh" type="file" />
+
+                            <br />
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.HinhAnh1, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Hình ảnh 1</label>
+                        <div class="col-md-10">
+                            <input id="HinhAnh" name="HinhAnh" type="file" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.HinhAnh2, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Hình ảnh 2</label>
+                        <div class="col-md-10">
+                            <input id="HinhAnh" name="HinhAnh" type="file" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.HinhAnh3, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Hình ảnh 3</label>
+                        <div class="col-md-10">
+                            <input id="HinhAnh" name="HinhAnh" type="file" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.HinhAnh4, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Hình ảnh 4</label>
+                        <div class="col-md-10">
+                            <input id="HinhAnh" name="HinhAnh" type="file" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @*@Html.LabelFor(model => model.MoTa, new { @class = "control-label col-md-2" })*@
+                        <label for="" class="col-sm-2 col-form-label">Mô tả</label>
+                        <div class="col-md-10">
+                            <textarea name="MoTa" class="textarea"></textarea>
+                            @Html.ValidationMessageFor(model => model.MoTa)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Tạo mới" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+
+</div>

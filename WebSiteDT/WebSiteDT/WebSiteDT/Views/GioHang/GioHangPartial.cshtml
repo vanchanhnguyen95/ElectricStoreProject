@@ -1,0 +1,49 @@
+﻿@using WebSiteDT.Models
+@model IEnumerable<ItemGioHang>
+@* DÙng ViewBag để thể hiện sản phẩm có trong giỏ hàng và tổng tiền *@
+
+
+
+        <li class="header-cart dropdown default-dropdown" id="divGioHang">
+            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" href="@Url.Action("GioHangPartial", "GioHang")">
+                <div class="header-btns-icon">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="qty">@ViewBag.TongSoLuong</span>
+                </div>
+                <strong class="text-uppercase">Tình trạng giỏ hàng: </strong>
+                <br>
+                <span style="font-size: 12px">@ViewBag.TongTien.ToString("#,##") VND - @ViewBag.TongSoLuong (sp)</span>
+            </a>
+            <div class="custom-menu">
+                <div id="shopping-cart">
+                    <div class="shopping-cart-list">
+                        @if (Model == null)
+                        {
+                            <h3 class="text-center">Giỏ hàng trống</h3>
+                        }
+                        else
+                        {
+
+                            foreach (var item in Model)
+                            {
+                                <div class="product product-widget">
+                                    <div class="product-thumb">
+                                        <img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        <h3 class="product-price">@item.DonGia.ToString("#,##") VND<span class="qty"> - (@item.SoLuong)</span></h3>
+                                        <h2 class="product-name"><a href="#">@item.TenSP</a></h2>
+                                    </div>
+                                </div>
+                            }
+
+                        }
+                    </div>
+                    <div class="shopping-cart-btns ext-center">
+                        <a class="main-btn primary-btn t" href="@Url.Action("XemGioHang", "GioHang")">
+                            Giỏ hàng
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </li>

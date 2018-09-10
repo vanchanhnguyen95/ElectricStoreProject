@@ -1,0 +1,72 @@
+﻿@using WebSiteDT.Models
+@model IEnumerable<SanPham>
+
+
+<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+<ul class="menu-list">
+    <li><a href="@Url.Action("Index", "Home")">Trang chủ</a></li>
+    @foreach (var groupItem in Model.GroupBy(n => n.LoaiSanPham))
+    {
+        if (groupItem.Key != null)
+        {
+            <li class="dropdown mega-dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">@groupItem.Key.TenLoai <i class="fa fa-caret-down"></i></a>
+                <div class="custom-menu">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <ul class="list-links">
+                                @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
+                                {
+                                    if (item.Key != null)
+                                    {
+                                        <li><a href="@Url.Action("SanPham","SanPham", new { @MaLoaiSP=groupItem.Key.MaLoaiSP, @MaNSX=item.Key.MaNSX})">@item.Key.TenNSX</a></li>
+                                    }
+                                }
+
+                            </ul>
+                            <hr class="hidden-md hidden-lg">
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+        }
+    }
+
+     <li class="dropdown mega-dropdown full-width">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Thương hiệu <i class="fa fa-caret-down"></i></a>
+                <div class="custom-menu">
+                    <div class="row">
+
+                        @foreach (var groupItem in Model.GroupBy(n => n.LoaiSanPham))
+                        {
+
+                            if (groupItem.Key != null) {
+                                <div class="col-md-4">
+                                    <ul class="list-links">
+                                        <h3 class="text-uppercase">@groupItem.Key.TenLoai</h3>
+
+                                        @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
+                                        {
+
+                                            if (item.Key != null)
+                                            {
+                                                <li><a href="@Url.Action("SanPham","SanPham", new { @MaLoaiSP=groupItem.Key.MaLoaiSP, @MaNSX=item.Key.MaNSX})">@item.Key.TenNSX</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+
+                            }
+
+                        }
+
+
+                    </div>
+                </div>
+            </li>
+
+
+    <li><a href="@Url.Action("AboutUs", "Home")">Giới thiệu</a></li>
+    <li><a href="@Url.Action("Contact", "Home")">Liên hệ</a></li>
+</ul>

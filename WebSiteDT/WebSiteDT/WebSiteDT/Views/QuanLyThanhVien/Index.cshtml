@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebSiteDT.Models.ThanhVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+
+
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h2 class="title-1 text-uppercase">Quản lý thành viên</h2>
+                <h3 class="au-btn">
+                    <i class="zmdi zmdi-plus"></i>
+                    @Html.ActionLink("Thêm thành viên", "ThemThanhVien", null, new { @class = "btn btn-primary" })
+                </h3>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-striped table-bordered table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaiKhoan)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MatKhau)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HoTen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DiaChi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SoDienThoai)
+                </th>
+                <th>
+                    Loại TV
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaiKhoan)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MatKhau)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoDienThoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoai)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Sửa", "ChinhSuaThanhVien", new { id = item.MaThanhVien })
+
+                    </td>
+                    <td>@Html.ActionLink("Xóa", "XoaThanhVien", new { id = item.MaThanhVien })</td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+</div>

@@ -1,0 +1,66 @@
+﻿@model WebSiteDT.Models.ThanhVien
+
+@{
+    ViewBag.Title = "XoaThanhVien";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 p-b-10">
+            <div class="overview-wrap">
+                <h2 class="title-1 text-uppercase">Xóa thành viên</h2>
+                <h3 class="au-btn au-btn-icon">
+                    <i class="zmdi zmdi-plus"></i>
+                    @Html.ActionLink("Trở về", "Index", new { @class = "btn btn-primary" })
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TaiKhoan)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TaiKhoan)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.HoTen)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HoTen)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <h4 class="text-warning">Bạn chắc chắn muốn xóa?</h4>
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xác nhận xóa" class="btn btn-danger" />
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+
+
+

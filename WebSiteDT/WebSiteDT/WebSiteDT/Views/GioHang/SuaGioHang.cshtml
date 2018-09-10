@@ -1,0 +1,128 @@
+﻿@using WebSiteDT.Models
+@model ItemGioHang
+
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/Layout/ProductLayout.cshtml";
+}
+
+@{ 
+    List<ItemGioHang> lstGioHang = ViewBag.GioHang as List<ItemGioHang>;
+}
+
+<div class="col-9">
+    @if (lstGioHang.Count() == 0)
+    {
+        <h2>Giỏ hàng rỗng</h2>
+    }
+    else
+    {
+   
+        <div class="col-md-12">
+            <div class="order-summary clearfix">
+                <div class="section-title">
+                    <h3 class="title">THÔNG TIN ĐẶT HÀNG</h3>
+                </div>
+                <table class="shopping-cart-table table">
+                    <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th></th>
+                            <th class="text-center">Giá</th>
+                            <th class="text-center">Số lượng</th>
+                            <th class="text-center">Thành tiền</th>
+                            <th>Sửa</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in lstGioHang)
+                        {
+                            //Sản phẩm có mã sản phẩm được chỉnh sửa gửi từ tham số bên trong giỏ hàng
+                            if (Model.MaSP == item.MaSP)
+                            {
+                                using (Html.BeginForm("CapNhatGioHang", "GioHang"))
+                                {
+                        <tr>
+                            <td class="thumb"><img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" alt=""></td>
+                            <td class="details">
+                                <a href="#">@item.TenSP</a>
+                                <ul>
+                                    <li><span>Mã SP: @item.MaSP @Html.Hidden("MaSP", item.MaSP)</span></li>
+                                    <li><span>Xuất xứ: Hàng chính hãng</span></li>
+                                </ul>
+                            </td>
+                            <td class="price text-center"><strong>@item.DonGia.ToString("#,##") VND</strong><br><del class="font-weak"><small>@(item.DonGia + item.DonGia * 20 / 100) VND</small></del></td>
+                            @*<td class="qty text-center">@Html.TextBox("SoLuong", item.SoLuong) </td>*@
+                            <td class="qty text-center"><input class="input SoLuongThayDoi" type="number" name="SoLuong" value="@item.SoLuong">
+                                                        <p id="TB_SoLuongThayDoi" class="text-danger"></p>
+                            </td>
+                            <td class="total text-center"><strong class="primary-color">@item.ThanhTien.ToString("#,##") VND</strong></td>
+                            <td><input type="submit" class="btn btn-warning" value="Lưu" id="btnCapNhatGH"/></td>
+                            <td><h4> <i class="fa fa-close btn btn-danger"></i>@Html.ActionLink("|", "XoaGioHang", new { @MaSP = item.MaSP })</h4></td>
+                            @*<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>*@
+                        </tr>
+                                }
+                            }
+                            else
+                            {
+                        <tr>
+                            <td class="thumb"><img src="@Url.Content("~/Content/HinhAnhSP/" + item.HinhAnh)" alt=""></td>
+                            <td class="details">
+                                <a href="#">@item.TenSP</a>
+                                <ul>
+                                    <li><span>Mã: @item.MaSP</span></li>
+                                    <li><span>Xuất xứ: Hàng chính hãng</span></li>
+                                </ul>
+                            </td>
+                            <td class="price text-center"><strong>@item.DonGia.ToString("#,##") VND</strong><br><del class="font-weak"><small>@(item.DonGia + item.DonGia * 20 / 100) VND</small></del></td>
+                            <td class="qty text-center"><input class="input " type="number" value="@item.SoLuong">
+                                                        
+                            </td>
+                            <td class="total text-center"><strong class="primary-color">@item.ThanhTien.ToString("#,##") VND</strong></td>
+                            @*<td class="text-right"><button class="main-btn icon-btn"><i class="fa fa-close"></i></button></td>*@
+                            <td><h4> <i class="fa fa-edit btn btn-success "></i> @Html.ActionLink("|", "SuaGioHang", new { @MaSP = item.MaSP })</h4></td>
+                            <td><h4> <i class="fa fa-close btn btn-danger"></i>@Html.ActionLink("|", "XoaGioHang", new { @MaSP = item.MaSP })</h4></td>
+                        </tr>
+                            }
+                        }
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="empty" colspan="3"></th>
+                            <th>THÀNH TIỀN</th>
+                            <th colspan="2" class="sub-total">@ViewBag.TongTien.ToString("#,##") VND</th>
+                        </tr>
+                        <tr>
+                            <th class="empty" colspan="3"></th>
+                            <th>Phí vận chuyển</th>
+                            <td colspan="2">Miễn phí </td>
+                        </tr>
+                        <tr>
+                            <th class="empty" colspan="3"></th>
+                            <th>TỔNG CỘNG</th>
+                            <th colspan="2" class="total">@ViewBag.TongTien.ToString("#,##") VND</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    }
+</div>
+
+@* Kiểm tra số lượng thay đổi *@
+<script>
+    $("#btnCapNhatGH").click(function () {
+        //Kiểm tra số lượng không phải là số hoặc nhỏ hơn 0
+        var SoLuong = $(".SoLuongThayDoi").val();
+        if (isNaN(SoLuong) == true || SoLuong < 0) {
+            $("#TB_SoLuongThayDoi").text("Số lượng không hợp lệ!");
+            return false;
+        }
+
+    });
+</script>
+

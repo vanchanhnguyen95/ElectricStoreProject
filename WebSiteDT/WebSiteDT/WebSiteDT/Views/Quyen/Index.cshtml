@@ -1,0 +1,71 @@
+﻿@using WebSiteDT.Models;
+@model IEnumerable<Quyen>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    //Khởi tạo control WebGrid
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 15);
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 p-b-10">
+            <div class="overview-wrap">
+                <h2 class="title-1">Quản lý quyền</h2>
+                <h3 class="au-btn au-btn-icon">
+                    <i class="zmdi zmdi-plus"></i>
+                    @Html.ActionLink("Thêm quyền", "ThemQuyen", null, new { @class = "btn btn-primary" })
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Thể hiện dữ liệu thông qua control webGrid*@
+@grid.GetHtml(
+    tableStyle: "divTable table table-borderless table-striped table-earning",
+    headerStyle: "gridHead",
+    footerStyle: "gridFooter",
+    rowStyle: "gridRow",
+    alternatingRowStyle: "gridAltRow",
+    columns: grid.Columns(
+    grid.Column("MaQuyen", "Mã quyền"),
+    grid.Column("TenQuyen", "Tên quyền")
+
+    ))
+
+
+@*Css cho từng Style của table*@
+<style>
+    .divTable {
+        width: 100%;
+        border: 1px solid #999999;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+        }
+
+    .gridHead {
+        background-color: Green;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }
+</style>
+
+<style>
+    .active{
+        color: #ffffff;
+    }
+    .quanlyquyen{
+        color: blue;
+    }
+</style>
+

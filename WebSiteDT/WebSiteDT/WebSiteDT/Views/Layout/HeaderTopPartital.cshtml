@@ -1,0 +1,268 @@
+﻿@using WebSiteDT.Models
+
+
+
+<!-- css files -->
+<link rel="stylesheet" href="~/Content/login/css/style.css" type="text/css" media="all" />
+<!-- Style-CSS -->
+<link rel="stylesheet" href="~/Content/login/css/fontawesome-all.css">
+<!-- Font-Awesome-Icons-CSS -->
+<!-- //css files -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+<!-- //web-fonts -->
+<!-- top Header -->
+
+<div id="top-header">
+    <div class="container">
+        <div class="pull-left">
+            <span>Chào mừng đến với Lemon-shop!</span>
+        </div>
+        <div class="pull-right">
+            <ul class="header-top-links">
+                <li><a href="#">Cửa hàng</a></li>
+                <li><a href="#">Khuyến mãi</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li class="dropdown default-dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
+                    <ul class="custom-menu">
+                        <li><a href="#">English (ENG)</a></li>
+                        <li><a href="#">Russian (Ru)</a></li>
+                        <li><a href="#">French (FR)</a></li>
+                        <li><a href="#">Spanish (Es)</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown default-dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
+                    <ul class="custom-menu">
+                        <li><a href="#">USD ($)</a></li>
+                        <li><a href="#">EUR (€)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /top Header -->
+<!-- header -->
+<div id="header">
+    <div class="container">
+        <div class="pull-left">
+            <!-- Logo -->
+            <div class="header-logo" >
+                <h2>
+                    <a class="logo text-uppercase font" href="@Url.Action("Index","Home")" style="font-weight: bold;">
+                        Lemon <span style="color: #F8694A">Shop</span>
+                    </a>
+                </h2>
+            </div>
+            <!-- /Logo -->
+            <!-- Search -->
+            <div class="header-search">
+
+                @*Tạo form submit về action tìm kiếm*@
+                @using (Html.BeginForm("LayTuKhoaTimKiem", "TimKiem"))
+                {
+                    <input class="input" type="text" name="sTuKhoa" placeholder=" Nhập tên sản phẩm...">
+                    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+                }
+            </div>
+            <!-- /Search -->
+        </div>
+        <div class="pull-right">
+            <ul class="header-btns">
+                <!-- Account -->
+                <li class="header-account dropdown default-dropdown">
+                    <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                        <div class="header-btns-icon">
+                            <i class="fa fa-user-o"></i>
+                        </div>
+                        <strong class="text-uppercase">Thông tin tài khoản<i class="fa fa-caret-down"></i></strong>
+                    </div>
+                    @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != null)
+                    {
+                        ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                        <a>
+                            <span class="text-uppercase"> @tv.HoTen </span><span>/</span>
+                            <span class="text-uppercase"> @Html.ActionLink("THOÁT", "DangXuat", "Home")</span>
+                        </a>
+
+                    }
+                    else
+                    {
+                        <a href="#" class="text-uppercase" id="btnDangNhap">Đăng nhập</a><span>/</span> <a href="@Url.Action("DangKy", "Home")" class="text-uppercase">Đăng ký</a>
+                    }
+
+                    <ul class="custom-menu">
+                        <li><a href="#"><i class="fa fa-user-o"></i> Giỏ hàng</a></li>
+                        <li><a href="#"><i class="fa fa-heart-o"></i> Yêu thích </a></li>
+                    </ul>
+                </li>
+                <!-- /Account -->
+                <!-- Cart -->
+                @* Chèn Partial View giỏ hàng vào layout(Tách icon giỏ hàng sang 1 partial view mới) *@
+                @Html.Action("GioHangPartial", "GioHang")
+                <!-- /Cart -->
+                <!-- Mobile nav toggle-->
+                <li class="nav-toggle">
+                    <button class="nav-toggle-btn main-btn icon-btn"><i class="fa fa-bars"></i></button>
+                </li>
+                <!-- / Mobile nav toggle -->
+            </ul>
+        </div>
+    </div>
+    <!-- header -->
+</div>
+<!-- container -->
+
+<div id="popup_login">
+
+    <!-- content -->
+    <div class="sub-main-w3">
+        <div id="form-content">
+
+            
+            @using (Html.BeginForm("DangNhap", "Home"))
+            {
+
+                <div id="close-form">
+                    <i class="fa fa-close" style="font-size:36px"></i>
+                </div>
+                <h2 style="color: white">
+                    Đăng nhập
+                    <i class="fas fa-level-down-alt"></i>
+                </h2>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fa fa-user-o"></i>
+                        Tài khoản
+                    </label>
+                    <input placeholder="Tài khoản" name="txtTaiKhoan" type="text" required="">
+                </div>
+                <div class="form-style-agile">
+                    <label>
+                        <i class="fa fa-key fa-fw"></i>
+                        Mật khẩu
+                    </label>
+                    <input placeholder="Mật khẩu" name="txtMatKhau" type="password" required="">
+                </div>
+                <div>
+                    <h3 id="ThongBao" style="font-weight: bold; color: red;"></h3>
+                </div>
+                <!-- checkbox -->
+                <div class="wthree-text">
+                    <ul>
+                        <li><a href="#">Quên mật khẩu?</a></li>
+                    </ul>
+                </div>
+                <!-- //checkbox -->
+                    <input type="hidden" value="@Request.Url.ToString()" name="redirec" />
+                    <input type="submit" value="Đăng nhập">
+                
+            }
+        </div>
+    </div>
+    <!-- //content -->
+</div>
+
+@if(TempData["LoiDangNhap"]!=null)
+{
+    <script>
+        
+        alert("Tài khoản mất khẩu không đúng !");
+    </script>
+}
+<style>
+    .sub-main-w3 form {
+        background-color: #30323A !important;
+    }
+
+    .login {
+        text-align: center;
+    }
+
+    #btnDangNhap {
+        float: left;
+    }
+
+    #form-content {
+        position: relative;
+    }
+
+    #close-form {
+        color: white;
+        position: absolute;
+        top: 3%;
+        right: 13%;
+        cursor: pointer;
+    }
+
+    #login-form {
+        cursor: pointer;
+    }
+    /*Css cho phần popuplogin*/
+    #popup_login {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 99;
+        display: none;
+    }
+</style>
+
+
+<script>
+    addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    }
+</script>
+<!-- Jquery -->
+<script src="~/Content/login/js/jquery-3.3.1.min.js"></script>
+<!-- //Jquery -->
+<!-- effect js -->
+@*<script src="~/Content/login/js/canva_moving_effect.js"></script>*@
+<!-- //effect js -->
+
+
+
+
+<script>
+    $("#btnDangNhap").click(function () {
+        //$("#popup_login").css("display", "block");
+        //Đây là thay đổi 1 tham số, cho form hiện lên
+        $("#popup_login").fadeIn(500);
+
+        //thay đổi 2 tham số cần viết như sau
+        $("#popup_login").css({
+            "display": "block",
+            //"background": "red"
+        });
+
+        //Ản form
+        $("#close-form").click(AnForm);
+        function AnForm() {
+            $("#popup_login").hide()
+        }
+
+        //Ví dụ về lấy giá trị từ textbox
+        $("#btnDangNhap1").click(function () {
+            var TaiKhoan = $(".TaiKhoan").val();
+            var MatKhau = $(".MatKhau").val();
+
+            alert("Tài khoản:" + TaiKhoan + "\n Mật khẩu: " + MatKhau);
+            if (TaiKhoan == "") {
+                alert("Lỗi");
+                return;
+            }
+        })
+
+    })
+</script>
